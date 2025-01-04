@@ -62,11 +62,11 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\python311.dll',
    'BINARY'),
-  ('_sounddevice_data\\portaudio-binaries\\libportaudio64bit.dll',
-   'C:\\Users\\loki\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\_sounddevice_data\\portaudio-binaries\\libportaudio64bit.dll',
-   'BINARY'),
   ('_sounddevice_data\\portaudio-binaries\\libportaudio64bit-asio.dll',
    'C:\\Users\\loki\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\_sounddevice_data\\portaudio-binaries\\libportaudio64bit-asio.dll',
+   'BINARY'),
+  ('_sounddevice_data\\portaudio-binaries\\libportaudio64bit.dll',
+   'C:\\Users\\loki\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\_sounddevice_data\\portaudio-binaries\\libportaudio64bit.dll',
    'BINARY'),
   ('_decimal.pyd',
    'C:\\Program '
@@ -159,7 +159,7 @@
  [],
  False,
  False,
- 1736015258,
+ 1736015435,
  [('runw.exe',
    'C:\\Users\\loki\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\runw.exe',
    'EXECUTABLE')],
