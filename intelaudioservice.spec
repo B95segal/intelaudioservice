@@ -22,7 +22,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='Intel(R) Audio Service',
+    name='intelaudioservice',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,

