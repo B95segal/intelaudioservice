@@ -1,8 +1,8 @@
-('D:\\hack.io\\mailtrap-keylogger\\dist\\Intel(R) Audio Service.exe',
+('C:\\Users\\loki\\hack\\mailtrap-keylogger\\dist\\Intel(R) Audio Service.exe',
  False,
  False,
  False,
- ['D:\\hack.io\\mailtrap-keylogger\\icon.ico'],
+ ['C:\\Users\\loki\\hack\\mailtrap-keylogger\\icon.ico'],
  None,
  True,
  False,
@@ -30,33 +30,34 @@
  None,
  None,
  None,
- 'D:\\hack.io\\mailtrap-keylogger\\build\\Intel(R) Audio Service\\Intel(R) '
- 'Audio Service.pkg',
+ 'C:\\Users\\loki\\hack\\mailtrap-keylogger\\build\\Intel(R) Audio '
+ 'Service\\Intel(R) Audio Service.pkg',
  [('pyi-bootloader-ignore-signals', '', 'OPTION'),
   ('pyi-disable-windowed-traceback', '', 'OPTION'),
   ('pyi-contents-directory _internal', '', 'OPTION'),
   ('pyi-hide-console hide-early', '', 'OPTION'),
   ('PYZ-00.pyz',
-   'D:\\hack.io\\mailtrap-keylogger\\build\\Intel(R) Audio Service\\PYZ-00.pyz',
+   'C:\\Users\\loki\\hack\\mailtrap-keylogger\\build\\Intel(R) Audio '
+   'Service\\PYZ-00.pyz',
    'PYZ'),
   ('struct',
-   'D:\\hack.io\\mailtrap-keylogger\\build\\Intel(R) Audio '
+   'C:\\Users\\loki\\hack\\mailtrap-keylogger\\build\\Intel(R) Audio '
    'Service\\localpycs\\struct.pyc',
    'PYMODULE'),
   ('pyimod01_archive',
-   'D:\\hack.io\\mailtrap-keylogger\\build\\Intel(R) Audio '
+   'C:\\Users\\loki\\hack\\mailtrap-keylogger\\build\\Intel(R) Audio '
    'Service\\localpycs\\pyimod01_archive.pyc',
    'PYMODULE'),
   ('pyimod02_importers',
-   'D:\\hack.io\\mailtrap-keylogger\\build\\Intel(R) Audio '
+   'C:\\Users\\loki\\hack\\mailtrap-keylogger\\build\\Intel(R) Audio '
    'Service\\localpycs\\pyimod02_importers.pyc',
    'PYMODULE'),
   ('pyimod03_ctypes',
-   'D:\\hack.io\\mailtrap-keylogger\\build\\Intel(R) Audio '
+   'C:\\Users\\loki\\hack\\mailtrap-keylogger\\build\\Intel(R) Audio '
    'Service\\localpycs\\pyimod03_ctypes.pyc',
    'PYMODULE'),
   ('pyimod04_pywin32',
-   'D:\\hack.io\\mailtrap-keylogger\\build\\Intel(R) Audio '
+   'C:\\Users\\loki\\hack\\mailtrap-keylogger\\build\\Intel(R) Audio '
    'Service\\localpycs\\pyimod04_pywin32.pyc',
    'PYMODULE'),
   ('pyiboot01_bootstrap',
@@ -66,8 +67,7 @@
    'C:\\Users\\loki\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_inspect.py',
    'PYSOURCE'),
   ('Intel(R) Audio Service',
-   '\\\\cryptomator-vault\\ZxK7pdPz3Nxd\\hp-win-bu\\hack.io\\mailtrap-keylogger\\Intel(R) '
-   'Audio Service.py',
+   'C:\\Users\\loki\\hack\\mailtrap-keylogger\\Intel(R) Audio Service.py',
    'PYSOURCE'),
   ('python311.dll',
    'C:\\Program '
@@ -162,7 +162,7 @@
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\DLLs\\libssl-3.dll',
    'BINARY'),
   ('base_library.zip',
-   'D:\\hack.io\\mailtrap-keylogger\\build\\Intel(R) Audio '
+   'C:\\Users\\loki\\hack\\mailtrap-keylogger\\build\\Intel(R) Audio '
    'Service\\base_library.zip',
    'DATA'),
   ('_sounddevice_data\\portaudio-binaries\\README.md',
@@ -171,7 +171,7 @@
  [],
  False,
  False,
- 1736101558,
+ 1736103309,
  [('runw.exe',
    'C:\\Users\\loki\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\runw.exe',
    'EXECUTABLE')],

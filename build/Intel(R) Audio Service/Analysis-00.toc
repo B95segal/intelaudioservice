@@ -1,5 +1,5 @@
-(['D:\\hack.io\\mailtrap-keylogger\\Intel(R) Audio Service.py'],
- ['D:\\hack.io\\mailtrap-keylogger'],
+(['C:\\Users\\loki\\hack\\mailtrap-keylogger\\Intel(R) Audio Service.py'],
+ ['C:\\Users\\loki\\hack\\mailtrap-keylogger'],
  [],
  [('C:\\Users\\loki\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks',
    -1000),
@@ -19,8 +19,7 @@
    'C:\\Users\\loki\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_inspect.py',
    'PYSOURCE'),
   ('Intel(R) Audio Service',
-   '\\\\cryptomator-vault\\ZxK7pdPz3Nxd\\hp-win-bu\\hack.io\\mailtrap-keylogger\\Intel(R) '
-   'Audio Service.py',
+   'C:\\Users\\loki\\hack\\mailtrap-keylogger\\Intel(R) Audio Service.py',
    'PYSOURCE')],
  [('inspect',
    'C:\\Program '
@@ -350,6 +349,14 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\ast.py',
    'PYMODULE'),
+  ('stringprep',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\stringprep.py',
+   'PYMODULE'),
+  ('_py_abc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\_py_abc.py',
+   'PYMODULE'),
   ('tracemalloc',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\tracemalloc.py',
@@ -369,14 +376,6 @@
   ('_compat_pickle',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\_compat_pickle.py',
-   'PYMODULE'),
-  ('_py_abc',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\_py_abc.py',
-   'PYMODULE'),
-  ('stringprep',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\stringprep.py',
    'PYMODULE'),
   ('subprocess',
    'C:\\Program '
@@ -1136,7 +1135,7 @@
  [],
  [],
  [('base_library.zip',
-   'D:\\hack.io\\mailtrap-keylogger\\build\\Intel(R) Audio '
+   'C:\\Users\\loki\\hack\\mailtrap-keylogger\\build\\Intel(R) Audio '
    'Service\\base_library.zip',
    'DATA'),
   ('_sounddevice_data\\portaudio-binaries\\README.md',
