@@ -16,13 +16,18 @@ if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
       
       If(Test-Path $ShortcutFile) {
             Remove-Item -Force -Confirm $ShortcutFile
-            Remove-MpPreference -ExclusionPath $FolderPath
+            Write-Output "Shortcut removed"
+            Remove-MpPreference -ExWclusionPath $FolderPath
+            Write-Output "Exclusion removed"
       }
 
       if (test-path $TargetFile) {
             Remove-item -Force -Path $TargetFile
+            Write-Output "Target file removed"
             Remove-MpPreference -ExclusionPath $TargetPath
+            Write-Output "Exclusion removed"
             Remove-Item -Confirm -Force $TargetPath
+            Write-Output "Target path removed"
       }
 
       
