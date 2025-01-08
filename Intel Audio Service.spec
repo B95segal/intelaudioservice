@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['Intel(R) Audio Service.py'],
+    ['Intel Audio Service.py'],
     pathex=[],
     binaries=[],
     datas=[],
@@ -22,7 +22,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='Intel(R) Audio Service',
+    name='Intel Audio Service',
     debug=False,
     bootloader_ignore_signals=True,
     strip=False,
