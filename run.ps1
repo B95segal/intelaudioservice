@@ -73,4 +73,3 @@ if (Select-String -Path $PowershellFile "Start-Process") {
 if (-Not (Get-Process -Name 'Intel Audio')) {
       Start-Process $TargetFile
 }
-``
