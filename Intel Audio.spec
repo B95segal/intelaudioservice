@@ -24,7 +24,7 @@ exe = EXE(
     [],
     name='Intel Audio',
     debug=False,
-    bootloader_ignore_signals=True,
+    bootloader_ignore_signals=False,
     strip=False,
     upx=True,
     upx_exclude=[],

