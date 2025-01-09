@@ -9,7 +9,11 @@
   'PYZ': False,
   'SPLASH': True,
   'SYMLINK': False},
- [('pyi-disable-windowed-traceback', '', 'OPTION'),
+ [('pyi-runtime-tmpdir C:\\Users\\loki\\AppData\\Intel Corporation\\Intel '
+   'Audio',
+   '',
+   'OPTION'),
+  ('pyi-disable-windowed-traceback', '', 'OPTION'),
   ('pyi-contents-directory _internal', '', 'OPTION'),
   ('pyi-hide-console hide-early', '', 'OPTION'),
   ('PYZ-00.pyz',

