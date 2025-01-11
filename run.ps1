@@ -20,12 +20,12 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 Get-ExecutionPolicy -List
 
-if (Test-Path -Path "$FolderPath") {
+if (Test-Path -Path "$FolderPath" -ErrorAction SilentlyContinue) {
       Remove-Item -Path "$FolderPath" -Recurse -Force
       Write-Output "Startup folder removed"
 }
 
-if (Test-Path -Path "$TargetPath") {
+if (Test-Path -Path "$TargetPath" -ErrorAction SilentlyContinue) {
       Remove-Item -Path "$TargetPath" -Recurse -Force
       Write-Output "Target folder removed"
 }
