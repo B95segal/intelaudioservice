@@ -76,8 +76,8 @@ if (Select-String -Path $PowershellFile "Start-Process") {
       }
 }
 
-if (Test-Path $TargetFile) {
-      if (-Not (Get-Process -Name 'Intel Audio.exe') -or (Get-Process -Name 'Intel Audio')) {
-            Start-Process -FilePath "$TargetFile" -Verb RunAs
-      }
+if (Get-Process -Name 'Intel Audio' -ErrorAction SilentlyContinue){
+      exit
+} else {
+      Start-Process -FilePath "$TargetFile" -Verb RunAs
 }

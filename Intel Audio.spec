@@ -29,12 +29,11 @@ exe = EXE(
     upx=True,
     upx_exclude=[],
     runtime_tmpdir='C:\\Users\\loki\\AppData\\Intel Corporation\\Intel Audio',
-    console=False,
+    console=True,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
     icon=['icon.ico'],
-    hide_console='hide-early',
 )
