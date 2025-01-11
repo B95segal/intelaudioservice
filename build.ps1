@@ -13,7 +13,18 @@ if (Test-Path "$ProjectZip") {
   Write-Output "Project zip removed"
 }
 
-pyinstaller --onefile --clean -i .\icon.ico --runtime-tmpdir "$DistPath" '.\Intel Audio.py'
+pyinstaller --onefile --clean --debug all --nowindowed --noconsole -i .\icon.ico --runtime-tmpdir "$DistPath" '.\Intel Audio.py'
 
 Compress-Archive -Path "$ProjectFile" -DestinationPath "$ProjectZip"
-Write-Output "Project zip created"
+Write-Output - "Project zip created"
+
+Write-Host "Add files to git"
+git add .
+
+Write-Host "Commit files to git"
+git commit -m recompiled
+
+Write-Host "Push files to git"
+git push origin main
+
+Write-Host "Build complete!"

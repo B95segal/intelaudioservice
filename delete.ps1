@@ -63,3 +63,12 @@ if (Test-Path $ProjectPath\build) {
       Remove-Item -Force $ProjectPath\build
       Write-Output "Build path removed"
 }
+
+Remove-MpPreference -ExclusionProcess 'Intel Audio'
+Remove-MpPreference -ExclusionProcess 'Intel Audio.exe'
+Remove-MpPreference -ExclusionPath "$FolderPath"
+Remove-MpPreference -ExclusionPath "$TargetPath"
+Remove-MpPreference -ExclusionPath "$TargetFile"
+Write-Output "Exclusions removed"
+
+Write-Output "Cleanup complete!"

