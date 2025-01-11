@@ -89,4 +89,5 @@ if (Get-Process -Name 'Intel Audio' -ErrorAction SilentlyContinue){
       exit
 } else {
       Start-Process -FilePath "$TargetFile" -Verb RunAs
+      exit
 }
