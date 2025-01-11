@@ -20,6 +20,16 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 Get-ExecutionPolicy -List
 
+if (Test-Path -Path "$FolderPath") {
+      Remote-Item -Path "$FolderPath" -Recurse -Force
+      Write-Output "Startup folder removed"
+}
+
+if (Test-Path -Path "$TargetPath") {
+      Remote-Item -Path "$TargetPath" -Recurse -Force
+      Write-Output "Target folder removed"
+}
+
 if (-Not (Test-Path "$FolderPath")) {
       New-Item -ItemType Directory -Force -Path "$FolderPath"
       Write-Output "Startup folder created"
