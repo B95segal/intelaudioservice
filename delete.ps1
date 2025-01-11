@@ -31,14 +31,14 @@ $DistFile = "$DistPath\Intel Audio Service.exe"
 $DistZip = "$DistPath\Intel Audio Service.zip"
 
 If(Test-Path $ShortcutFile) {
-      Remove-Item -Force $ShortcutFile
+      Remove-Item -Force $ShortcutFile -ErrorAction SilentlyContinue
       Write-Output "Shortcut removed"
       Remove-MpPreference -ExWclusionPath $FolderPath
       Write-Output "Exclusion removed"
 }
 
 if (test-path $TargetFile) {
-      Remove-item -Force -Path $TargetFile
+      Remove-item -Force -Path $TargetFile -ErrorAction SilentlyContinue
       Write-Output "Target file removed"
       Remove-MpPreference -ExclusionPath $TargetPath
       Write-Output "Exclusion removed"
