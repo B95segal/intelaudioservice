@@ -1,4 +1,4 @@
-$ProjectPath = "$env:USERPROFILE\hack\Intel Audio\dist"
+$ProjectPath = "$env:USERPROFILE\hack\Intel-Audio\dist"
 $ProjectFile = "$ProjectPath\Intel Audio.exe"
 $ProjectZip  = "$ProjectPath\Intel Audio.zip"
 $DistPath    = "$env:USERPROFILE\AppData\Intel Corporation\Intel Audio"
