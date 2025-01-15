@@ -1,2 +1,0 @@
-C:\Users\loki\hack\Intel-Audio\x64\Debug\intelaudio.exe.lastcodeanalysissucceeded
-C:\Users\loki\hack\Intel-Audio\intelaudio\x64\Debug\NativeCodeAnalysis.read.1.tlog

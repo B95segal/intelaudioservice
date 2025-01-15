@@ -1,0 +1,8 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (x64\Release\) contains files shared from another project (intelaudio.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Intel Audio Sync.cpp
+C:\Users\loki\hack\Intel-Audio\intelaudio\Intel Audio Sync.cpp(78,94): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 190 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  intelaudio.vcxproj -> C:\Users\loki\hack\Intel-Audio\x64\Release\Intel Audio Sync.exe
