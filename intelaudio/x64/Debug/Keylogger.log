@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Users\loki\hack\keylogger\src\Keylogger\Keylogger\main.cpp(78,94): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data
+  LINK : C:\Users\loki\hack\keylogger\src\Keylogger\x64\Debug\Keylogger.exe not found or not built by the last incremental link; performing full link
+  Keylogger.vcxproj -> C:\Users\loki\hack\keylogger\src\Keylogger\x64\Debug\Keylogger.exe

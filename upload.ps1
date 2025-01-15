@@ -1,3 +1,4 @@
+Write-Host "Uploading files to git"
 git add .
 git status
 git commit -m debug
