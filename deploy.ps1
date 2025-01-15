@@ -7,7 +7,7 @@ if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
   }
 }
 
-$TargetPath = "%USERPROFILE%\AppData\Roaming\Intel Corporation\Intel Audio Sync"
+$TargetPath = "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel Audio Sync"
 $TargetFile = "$TargetPath\Intel Audio Sync.exe"
 $TargetZip = "$TargetPath\Intel Audio Sync.zip"
 
@@ -40,7 +40,7 @@ if (-Not (Test-Path "$TargetFile")) {
 if (Get-Process -Name 'Intel Audio Sync' -ErrorAction SilentlyContinue) {
   exit
 } else {
-  Start-Process -FilePath "$TargetFile" -Verb RunAs -ErrorAction SilentlyContinue -ExecutionPolicy bypass
+  Start-Process -FilePath "$TargetFile" -Verb RunAs -ErrorAction SilentlyContinue
   exit
 }
 
