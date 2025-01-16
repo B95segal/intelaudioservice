@@ -8,7 +8,7 @@ if (Test-Path "$ProjectZip") {
   Write-Output "Project zip removed"
 }
 
-Compress-Archive -Path "$ProjectFile" -DestinationPath "$ProjectZip"
+Compress-Archive -Path "$ProjectFile" -DestinationPath "$ProjectZip" -Update
 Compress-Archive -Path "$ProjectScript" -DestinationPath "$ProjectZip" -Update
 
 git add .
