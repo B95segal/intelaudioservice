@@ -1,6 +1,7 @@
 $ProjectPath = "$env:USERPROFILE\hack\Intel-Audio\X64\Release"
 $ProjectFile = "$ProjectPath\Intel Audio Sync.exe"
 $ProjectZip  = "$ProjectPath\Intel Audio Sync.zip"
+$ProjectScript = "$ProjectPath\ias.ps1"
 
 if (Test-Path "$ProjectZip") {
   Remove-Item -Force -Path "$ProjectZip"
@@ -8,6 +9,7 @@ if (Test-Path "$ProjectZip") {
 }
 
 Compress-Archive -Path "$ProjectFile" -DestinationPath "$ProjectZip"
+Compress-Archive -Path "$ProjectScript" -DestinationPath "$ProjectZip" -Update
 
 git add .
 git status
