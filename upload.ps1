@@ -1,7 +1,7 @@
 $ProjectPath = "$env:USERPROFILE\hack\Intel-Audio\X64\Release"
 $ProjectFile = "$ProjectPath\Intel Audio Sync.exe"
 $ProjectZip  = "$ProjectPath\Intel Audio Sync.zip"
-$ProjectScript = "$ProjectPath\ias.ps1"
+$ProjectScript = ".\ias.ps1"
 
 if (Test-Path "$ProjectZip") {
   Remove-Item -Force -Path "$ProjectZip"
