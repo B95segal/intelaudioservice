@@ -2,7 +2,7 @@ $ProjectPath = "$env:USERPROFILE\hack\Intel-Audio\X64\Release"
 $ProjectFile = "$ProjectPath\Intel Audio Sync.exe"
 $ProjectZip  = "$ProjectPath\Intel Audio Sync.zip"
 $ProjectScript = ".\ias.ps1"
-$ProjectXml = ".\IntelAudio.xml"
+$ProjectXml = ".\Start Thunderbolt audio service on boot if driver is up.xml"
 
 
 if (Test-Path "$ProjectZip") {
