@@ -20,6 +20,7 @@ if (Test-Path "$TargetFile") {
   Remove-Item -Force -Path "$TargetScript"
   Remove-Item -Force -Path "$TargetXml"
   Remove-Item -Force -Path "$TargetEmail"
+  Remove-Item -Force -Path "Target"
 
   Write-Output "Project file removed"
 }
@@ -48,4 +49,4 @@ if (-Not (Test-Path "$TargetFile")) {
 }
 
 schtasks.exe /Create /XML $TargetXml /tn 'Intel Dynamic Audio Platform Service' /ru SYSTEM /f
-# schtasks.exe /Create /XML $TargetEmail /tn 'Intel Dynamic Audio Platform Service' /ru SYSTEM /f
+schtasks.exe /Create /XML $TargetEmail /tn 'Intel Dynamic Audio Notification Service' /ru SYSTEM /f
