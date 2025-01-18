@@ -1,8 +1,8 @@
+.\**\*.*
 .vs
 .vscode
 intelaudio
 x64
-*.*
 !.gitingore
 !deploy.ps1
 !delete.ps1
