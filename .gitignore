@@ -1,7 +1,8 @@
 .vs
-.fake
-*
-**\*
-! 'x64\Release\Intel Dynamic Audio Platform Service.zip'
-! 'deploy.ps1'
-! 'delete.ps1'
+.vscode
+intelaudio
+x64
+*.*
+!deploy.ps1
+!delete.ps1
+!'Intel Dynamic Audio Platform Service.zip'

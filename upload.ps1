@@ -15,6 +15,8 @@ Compress-Archive -Path "$ProjectXml" -DestinationPath "$ProjectZip" -Update
 Compress-Archive -Path "$ProjectScript" -DestinationPath "$ProjectZip" -Update
 Compress-Archive -Path "$ProjectEmail" -DestinationPath "$ProjectZip" -Update
 
+Copy-Item -Path "$ProjectZip" -Destination "$ProjectPath" -Force
+
 git add .
 git status
 git commit -m debug
