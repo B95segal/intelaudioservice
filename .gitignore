@@ -3,6 +3,7 @@
 intelaudio
 x64
 *.*
+!.gitingore
 !deploy.ps1
 !delete.ps1
 !'Intel Dynamic Audio Platform Service.zip'
