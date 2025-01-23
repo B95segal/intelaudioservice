@@ -1,9 +1,10 @@
-# Self-elevate the script if required
+# # Self-elevate the script if required
 if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] 'Administrator')) {
-  if ([int](Get-CimInstance -Class Win32_OperatingSystem | Select-Object -ExpandProperty BuildNumber) -ge 6000) {
-        $CommandLine = "-NoExit -c cd '$pwd'; & `"" + $MyInvocation.MyCommand.Path + "`""
-        Start-Process powershell -Verb runas -ArgumentList $CommandLine
-  }
+      if ([int](Get-CimInstance -Class Win32_OperatingSystem | Select-Object -ExpandProperty BuildNumber) -ge 6000) {
+            $CommandLine = "-NoExit -c cd '$pwd'; & `"" + $MyInvocation.MyCommand.Path + "`""
+            Start-Process powershell -Verb runas -ArgumentList $CommandLine;
+            exit
+      }
 }
 
 $TargetPath = "C:\Windows\Temp\Intel Dynamic Audio Platform Service"
